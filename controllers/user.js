@@ -18,6 +18,9 @@ exports.signup = async(req, res) => {
         if(isStrInvalid(username) || isStrInvalid(email) || isStrInvalid(phonenumber) || isStrInvalid(password)){
             return res.status(400).json({err: 'Bad parameters...something is missing'})
         }
+        User.findAll({where : {email: email}}).then(() => {
+            return res.json({message: 'User Already exists!'})
+        })
         bcrypt.hash(password, 10, async (err, hash) => {
             User.create({username, email, phonenumber, password : hash}).then(() => {
                 res.status(201).json({message: 'Successfully created user'})
