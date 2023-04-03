@@ -11,7 +11,7 @@ async function login(e){
         if(response.status === 201){
             alert(response.data.message)
             localStorage.setItem('token', response.data.token)
-            window.location.href = '#'
+            window.location.href = 'chat.html'
         }else{
             console.log('Error loading')
         }

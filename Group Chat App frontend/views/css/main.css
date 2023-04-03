@@ -48,11 +48,11 @@ form input{
     width: 90%;
     color: #fff;
     cursor: pointer;
-    background-color: rgb(17, 107, 143);
+    background-color: #10a5f5;
 }
 
 .btn:hover{
-    background: rgba(17, 107, 143, 0.877);
+    background: #10a5f5;
 }
 
 input:focus{
@@ -76,7 +76,7 @@ input:focus{
 }
 
 .terms a{
-    color: rgb(17, 107, 143);
+    color: #10a5f5;
     text-decoration: none;
 }
 
@@ -86,7 +86,7 @@ input:focus{
 }
 
 .member a{
-    color: rgb(17, 107, 143);
+    color: #10a5f5;
     text-decoration: none;
 }
 
