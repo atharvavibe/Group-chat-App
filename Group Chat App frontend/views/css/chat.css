@@ -9,6 +9,10 @@
     "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+body{
+    background-color: #dfe9f5;
+}
+
 main{
     position: absolute;
     top: 50%;
@@ -16,6 +20,7 @@ main{
     transform: translate(-50%, -50%);
     width: 80%;
     overflow: hidden;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
 
 }
 
@@ -55,7 +60,7 @@ main header{
 
 .container{
     display: flex;
-    background-color:#dddddd;
+    background-color:#fff;
     padding: 20px;
     border-radius:  0 0 10px 10px;
     flex-direction: row;
@@ -66,7 +71,7 @@ main header{
 .user-window{
     width: 350px;
     color: black;
-    background-color: #bbbbbb;
+    background-color: #dfe9f5;
     border-radius: 10px;
     padding: 15px 20px;
     margin-right: 20px;
@@ -82,7 +87,7 @@ main header{
 }
 
 .users-head h4{
-     background-color: #7e7e7e;
+     background-color: #a1b5ce;
      padding: 0 8px;
      border-radius: 50px;
      flex-direction: row;
@@ -98,7 +103,7 @@ main header{
 .chat-window{
      width: 100%;
      border-radius: 10px;
-     background-color: #bbbbbb;
+     background-color: #dfe9f5;
 }
 
 .chats{
@@ -108,7 +113,7 @@ main header{
 
 .user-join{
     font-size: 0.9rem;
-    background-color: #eeeeee;
+    background-color: #fff;
     border-radius: 50px;
     width: max-content;
     padding: 5px 10px;
@@ -117,7 +122,7 @@ main header{
 }
 
 .chats .incoming{
-    background-color: #eeeeee;
+    background-color: #fff;
     padding: 5px 15px;
     max-width: 400px;
     margin-bottom: 15px;
@@ -149,7 +154,7 @@ main header{
 
 .user-input input{
     font-size: 16px;
-    background-color: #eeeeee;
+    background-color: #fff;
     padding: 10px 20px;
     outline: none;
     border: none;

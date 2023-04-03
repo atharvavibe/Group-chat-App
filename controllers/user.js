@@ -19,11 +19,17 @@ exports.signup = async(req, res) => {
         if(isStrInvalid(username) || isStrInvalid(email) || isStrInvalid(phonenumber) || isStrInvalid(password)){
             return res.status(400).json({err: 'Bad parameters...something is missing'})
         }
+        const ifUserExists = await User.findAll({where: {email: email}})
+        if(ifUserExists.length > 0){
+            return res.status(404).json({message: 'User Already exist'})
+        }
+        else{
         bcrypt.hash(password, 10, async (err, hash) => {
-            User.create({username, email, phonenumber, password : hash}).then(() => {
-                res.status(201).json({message: 'Successfully created user'})
-            })
+            console.log(err)
+            const userData = User.create({username, email, phonenumber, password: hash})
+            res.status(201).json({success: true, message: 'User created successfully', data: userData})
         })
+      }
     }catch(err){
         console.log(err)
     }
@@ -41,7 +47,6 @@ exports.login = async(req, res) => {
         }
         console.log(email, password)
         const user = await User.findAll({where: {email}}).then(user => {
-            console.log(user)
             if(user.length > 0){
                 bcrypt.compare(password, user[0].password, (err, result) => {
                     if(result === true){
@@ -54,6 +59,15 @@ exports.login = async(req, res) => {
                 return res.status(400).json({success: false, message: 'User does not exists'})
             }
         })
+    }catch(err){
+        console.log(err)
+    }
+}
+
+exports.showAllUsers = async(req, res) => {
+    try{
+        let users = User.findAll()
+        res.status(200).json({success: true, users: users})
     }catch(err){
         console.log(err)
     }

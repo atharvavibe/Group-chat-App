@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/views/css/chat.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script src="/chats.js" defer></script>
     <title>Chat App</title>
 </head>
 <body>
@@ -25,29 +27,31 @@
                     <h4>3</h4>
                 </div>
                 <div class="users-list">
-                    <p>Itachi</p>
+                    <!-- <p>Itachi</p>
                     <p>Sasuke</p>
-                    <p>Naruto</p>
+                    <p>Naruto</p> -->
                 </div>
             </div>
             <div class="chat-window">
               <div class="chats">
                 <div class="user-join">
-                    <p><b>Itachi</b> joined the chat</p>
+                    <!-- <p><b>Itachi</b> joined the chat</p> -->
                 </div>
                 <div class="message incoming">
-                    <h5>Itachi</h5>
-                    <p>Amaterasu!</p>
+                    <!-- <h5>Itachi</h5>
+                    <p>Amaterasu!</p> -->
                 </div>
                 <div class="message outgoing">
-                    <h5>Sasuke</h5>
-                    <p>Chidori</p>
+                    <!-- <h5>Sasuke</h5>
+                    <p>Chidori</p> -->
                 </div>
               </div>
+              <form id="message" onsubmit="sendChat(event)">
               <div class="user-input">
-                <input type="text" placeholder="Type your message">
-                <button>SEND</button>
-            </div>
+                <input type="text" name = 'chat' placeholder="Type your message">
+                <button type="submit">SEND</button>
+             </div>
+            </form>
             </div>
         </div>
     </main>
