@@ -41,11 +41,13 @@ const generateAccessToken = (id , username) => {
 
 exports.login = async(req, res) => {
     try{
+        var totalUsers = await User.count()
         const {email, password} = req.body
         if(isStrInvalid(email) || isStrInvalid(password)){
             return res.status(400).json({message: 'Email or password is missing '})
         }
         console.log(email, password)
+        //const allUsers = await User.findAll({attributes: ['username']})
         const user = await User.findAll({where: {email}}).then(user => {
             if(user.length > 0){
                 bcrypt.compare(password, user[0].password, (err, result) => {

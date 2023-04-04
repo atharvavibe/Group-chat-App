@@ -17,3 +17,23 @@ exports.sendMessage = async (req, res) => {
         console.log(err)
     }
 }
+
+exports.getMessage = async (req, res) => {
+    try{
+        const allUsers = await User.findAll({attributes: ['username']})
+        const totalUsers = allUsers.length
+        const chats = await Chat.findAll({
+            limit: 10,
+            order: [["updatedAt", "DESC"]], 
+            attributes: ['messages'],
+            include:{
+                model: User,
+                attributes: ['username'] 
+            }   
+        })
+        console.log(allUsers)
+        res.status(200).json({chats: chats, allUsers: allUsers, totalUsers: totalUsers })
+    }catch(err){
+        console.log(err)
+    }
+}

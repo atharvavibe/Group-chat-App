@@ -1,7 +1,21 @@
+const outgoingMessage = document.getElementById('outgoing message')
+
+window.addEventListener('DOMContentLoaded', () => {
+    const token = localStorage.getItem('token')
+    const response = axios.get('http://localhost:3000/chat/getmessage', {headers: {"Authorization": token}}).then(response => {
+        console.log(response)
+    })
+    
+
+})
+
+
+
 async function sendChat(e){
     try{
         e.preventDefault()
         const userChat = e.target.chat.value
+        showMessageOnUI(userChat)
         if(!userChat){
             return alert('Enter a message!')
         }
@@ -15,3 +29,7 @@ async function sendChat(e){
         console.log(err)
     }
 }
+
+// function showMessageOnUI(userChat){
+
+// }

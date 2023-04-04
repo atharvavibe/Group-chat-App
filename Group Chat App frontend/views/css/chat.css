@@ -119,6 +119,7 @@ main header{
     padding: 5px 10px;
     margin: 0 auto;
     margin-bottom: 15px;
+    display: none;
 }
 
 .chats .incoming{
