@@ -125,9 +125,9 @@ main header{
 .chats .incoming{
     background-color: #fff;
     padding: 5px 15px;
-    max-width: 400px;
+    max-width: fit-content;
     margin-bottom: 15px;
-    border-radius: 10px 50px 50px 10px;
+    border-radius: 10px 10px 10px 10px;
 }
 
 .message p{
@@ -136,12 +136,12 @@ main header{
 
 .outgoing{
     padding: 5px 15px;
-    max-width: 400px;
+    max-width: fit-content;
     margin-bottom: 15px;
     margin-left: auto;
     background-color: #10a5f5;
     color: white;
-    border-radius: 50px 10px 10px 50px;
+    border-radius: 10px 10px 10px 10px;
     text-align: right;
 }
 

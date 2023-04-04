@@ -31,7 +31,7 @@ exports.getMessage = async (req, res) => {
                 attributes: ['username'] 
             }   
         })
-        console.log(allUsers)
+        // console.log(allUsers)
         res.status(200).json({chats: chats, allUsers: allUsers, totalUsers: totalUsers })
     }catch(err){
         console.log(err)
