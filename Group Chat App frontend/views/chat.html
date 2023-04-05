@@ -16,7 +16,11 @@
             <img src="/icons/message-solid (1).svg" width="35px">
             <h1>Chat App</h1>
            </div>
-           <button type="button" class="hamburger">Logout</button>
+           <!-- <button type="button" class="hamburger">Logout</button> -->
+           <button type="submit" class="btn">Create Group</button>
+           <button type="submit" class="btn">Join Group</button>
+           <button type="submit" class="btn">Log out</button>
+
         </header>
         <div class="container">
             <div class="user-window">
@@ -30,21 +34,14 @@
             </div>
             <div class="chat-window" id="chat-window">
               <div class="chats" id="chats">
-                <!-- <div class="user-join" id="user-join">
+                 <!-- <div class="user-join" id="user-join">
                     <p><b>Itachi</b> joined the chat</p>
-                </div>
-                <div class="message incoming" id="message-incoming">
-                    <h5>Itachi</h5>
-                    <p>Amaterasu!</p>
-                </div>
-                <div class="message outgoing" id="message-outgoing">
-                    <h5>Sasuke</h5>
-                    <p>Chidori</p>
                 </div> -->
+               
               </div>
               <form id="message" onsubmit="sendChat(event)">
               <div class="user-input">
-                <input type="text" name = 'chat' placeholder="Type your message" id="message-input">
+                <input type="text" name = 'chat' placeholder="Type your message. . . ." id="message-input">
                 <button type="submit">SEND</button>
              </div>
             </form>

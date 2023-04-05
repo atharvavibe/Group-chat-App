@@ -24,7 +24,7 @@ exports.getMessage = async (req, res) => {
         const totalUsers = allUsers.length
         const chats = await Chat.findAll({
             limit: 10,
-            order: [["updatedAt", "DESC"]], 
+            order: [["updatedAt", "ASC"]], 
             attributes: ['messages'],
             include:{
                 model: User,

@@ -16,6 +16,7 @@ const chatRoutes = require('./routes/chats')
 //Models
 const User = require('./models/user')
 const Chat = require('./models/chats')
+const Group = require('./models/creategroup')
 
 const app = express()
 
@@ -31,7 +32,7 @@ app.use('/chat', chatRoutes)
 User.hasMany(Chat)
 Chat.belongsTo(User)
 
-sequelize.sync().then(result => {
+sequelize.sync({force: true}).then(result => {
     app.listen(3000)
 }).catch(err => {
     console.log(err)

@@ -40,16 +40,18 @@ async function sendChat(e){
         const token = localStorage.getItem('token')
         const response = await axios.post('http://localhost:3000/chat/sendmessage', chats, {headers: {"Authorization" : token}})
         console.log(response)
-        messageInput.innerHTML = ''
+        e.target.chat.value = ''
     }catch(err){
         console.log(err)
     }
 }
 
 function showNumberofUsers(totalUsers){
-    usersHead.innerHTML = 'People'
+    usersHead.innerHTML = '<b>People</b>'
     const nunmberofUsers = document.createElement("h4")
-    nunmberofUsers.innerText = totalUsers - 1
+    if(totalUsers != 0){
+        nunmberofUsers.innerText = totalUsers - 1
+    }else{nunmberofUsers.innerText = totalUsers}
     usersHead.appendChild(nunmberofUsers)
 }
 
