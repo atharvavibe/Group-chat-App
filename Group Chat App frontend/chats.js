@@ -3,16 +3,45 @@ const usersHead = document.getElementById('users-head')
 const usersList = document.getElementById('users-list')
 const chatsContainer = document.getElementById('chats')
 const messageInput = document.getElementById('user-input')
+const createGroup = document.getElementById('creategroupBtn')
+const groupList = document.getElementById('group-list')
 
-window.addEventListener('DOMContentLoaded', showUserMessages)
+
+window.addEventListener('DOMContentLoaded', showAll)
+
+function showAll(){
+    showUserMessagesAndGroups()
+    showUserMessages()
+}
+
+
+async function showUserMessagesAndGroups(){
+    try {
+        const token = localStorage.getItem('token')
+        const res = await axios.get('http://localhost:3000/group/getusergroups', {headers: {"Authorization" : token}})
+        //console.log(res.data.getusergroups[0].groupname)
+        showMygroupsonUI(res.data.getusergroups)
+    } catch (err) {
+        console.log(err)
+    }
+}
+function showMygroupsonUI(myGroups){
+    for(var i = 0; i < myGroups.length; i++){
+        const myGroupList = document.createElement('div')
+        myGroupList.classList.add('chat-groups')
+        myGroupList.innerHTML = `<p>${myGroups[i].groupname}<p>`
+        groupList.appendChild(myGroupList)
+    }
+    
+}
 
 async function showUserMessages(){
     setInterval(() => {
-        getChats()
+        getGlobalChats()
     }, 2000)
 }
 
-async function getChats(){
+async function getGlobalChats(){
    try{ 
         const token = localStorage.getItem('token')
         const response = await axios.get('http://localhost:3000/chat/getmessage', {headers: {"Authorization": token}})
@@ -25,6 +54,7 @@ async function getChats(){
         console.log(err)
     }
 }
+
 
 async function sendChat(e){
     try{
@@ -47,7 +77,8 @@ async function sendChat(e){
 }
 
 function showNumberofUsers(totalUsers){
-    usersHead.innerHTML = '<b>People</b>'
+    console.log(totalUsers)
+    usersHead.innerHTML = '<h3>People</h3>'
     const nunmberofUsers = document.createElement("h4")
     if(totalUsers != 0){
         nunmberofUsers.innerText = totalUsers - 1
@@ -56,6 +87,7 @@ function showNumberofUsers(totalUsers){
 }
 
 function showUsers(allUsers, token){
+    console.log(allUsers)
     usersList.innerHTML = ''
     const res = parseJwt(token)
     for(var i = 0; i < allUsers.length; i++){
@@ -72,7 +104,6 @@ function showUsers(allUsers, token){
 function showMessageOnUI(chats, token){
     chatsContainer.innerHTML = ''
     const res = parseJwt(token)
-    console.log(res.username, chats[2].user.username)
     for(var i = 0; i < chats.length; i++){
         if(res.username == chats[i].user.username){
             const messageOutgoing = document.createElement('div')
@@ -102,3 +133,7 @@ function parseJwt (token) {
 
     return JSON.parse(jsonPayload);
 }
+
+createGroup.addEventListener('click', () => {
+    window.location.href = 'creategroup.html'
+})

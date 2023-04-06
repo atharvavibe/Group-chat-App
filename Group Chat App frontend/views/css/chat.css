@@ -173,7 +173,7 @@ main header{
     background-color: #10a5f5;
     border-radius: 0 50px 50px 0;
     padding: 5px 15px;
-
+    cursor: pointer;
 }
 
 .btn{
@@ -190,8 +190,19 @@ main header{
     justify-items: center;
 }
 
+.chat-groups{
+    margin-bottom: 10px;
+}
+
+.chat-groups p{
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
+/* create-group css */
+
 .main-container{
-    width: 50%;
+    width: 450px;
    
 }
 
@@ -204,6 +215,86 @@ main header{
     padding: 15px 20px;
     margin-right: 20px;
 
+}
+
+.creategroup-container{
+    margin-bottom: 30px;
+    
+}
+
+.creategroup-container h2{
+    padding: 10px;
+    font-size: 22px;
+}
+
+.groupname{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between; 
+}
+
+.groupname input{
+    font-size: 16px;
+    background-color: #fff;
+    padding: 10px 20px;
+    outline: none;
+    border: none;
+    width: 100%;
+    border-radius: 50px;
+    margin-bottom: 10px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    
+}
+
+.groupname button{
+    font-size: 17px;
+    border: none;
+    outline: none;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: white;
+    background-color: #10a5f5;
+    border-radius: 50px;
+    padding: 10px;
+    cursor: pointer;
+    justify-items: center;
+    margin-top: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.joingroup-container{
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.joingroup-container h2{
+    font-size: 22px;
+}
+
+.group-header{
+    margin-bottom: 10px;
+}
+
+.chat-groups{
+    padding: 10px ;
+    width: 100%;
+    background-color: #bed3ed;
+    border-radius: 10px;
+}
+
+.people{
+    margin-bottom: 10px;
+    border-bottom: 3px solid#aabbd0
+}
+
+#globalchat{
+    font-size: 15px;
+}
+
+#logout{
+    font-size: 15px;
 }
 
 /* @media screen  and (max-width){

@@ -5,25 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/views/css/chat.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script src="/creategroup.js" defer></script>
     <title>Create Group</title>
 </head>
 <body>
-    <main class="main-container">
+    <main class="main-container" id="main-container">
         <header>
            <div class="title">
             <img src="/icons/message-solid (1).svg" width="35px">
             <h1>Chat App</h1>
            </div>
-           <!-- <button type="button" class="hamburger">Logout</button> -->
-          
-           <button type="submit" class="btn">Join Group</button>
-           <button type="submit" class="btn">Log out</button>
-
+           <button id="globalchat" class="btn"><h3>My Groups</h3></button>
+           <button type="submit" class="btn" id="logout"><h3>Log out</h3></button>
         </header>
         <div class="container">
             <div class="sub-container">
-                <input type="text" name="groupname" placeholder="Enter group name . . .">
-                <button type="submit">Create Group</button>
+                <div class="creategroup-container">
+                    <h2>Create Group</h2>
+                    <form onsubmit="createChatGroup(event)">
+                        <div class="groupname">
+                            <input type="text" name="groupname" placeholder="Enter group name . . .">
+                            <button type="submit" id="creatinggroupBtn">Create Group</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="joingroup-container">
+                    <h2>Join Group</h2>
+                </div>
             </div>
         </div>
     </main>
