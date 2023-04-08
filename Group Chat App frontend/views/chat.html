@@ -16,9 +16,13 @@
             <img src="/icons/message-solid (1).svg" width="35px">
             <h1>Chat App</h1>
            </div>
-           <!-- <button type="button" class="hamburger">Logout</button> -->
-           <button  class="btn" id="creategroupBtn"><h4>Create Group/Join Group</h4></button>
+           <div class="headerbtns">
+            <button class="btn" id="adduserBtn" ><h4>Add User\Remove User</h4></button>
+            <button class="btn" id="makeuseradminBtn" ><h4>Make admin</h4></button>
+            <button  class="btn" id="creategroupBtn"><h4>Create Group</h4></button>
            <button type="submit" class="btn" id="logoutBtn"><h4>Log out</h4></button>
+           </div>
+           
 
         </header>
         <div class="container">
@@ -37,7 +41,7 @@
                         <h3>My Groups</h3>            
                     </div>
                     <div class="group-list" id="group-list">
-                       <div class="chat-groups">
+                       <div class="chat-groups" onclick="getglobalChat(event)"> 
                         <p>Global Chat</p>
                        </div>
                     </div>

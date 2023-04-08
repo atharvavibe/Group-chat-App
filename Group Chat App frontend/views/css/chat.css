@@ -199,6 +199,18 @@ main header{
     font-weight: 500;
     cursor: pointer;
 }
+
+#adduserBtn{
+    visibility: hidden;
+}
+
+#removeuserBtn{
+    visibility: hidden;
+}
+
+#makeuseradminBtn{
+    visibility: hidden;
+}
 /* create-group css */
 
 .main-container{
@@ -270,7 +282,7 @@ main header{
 }
 
 .joingroup-container h2{
-    font-size: 22px;
+    font-size: 24px;
 }
 
 .group-header{
@@ -297,6 +309,44 @@ main header{
     font-size: 15px;
 }
 
+.join-group-container {
+    align-items: center;
+    justify-content: center;
+}
+
+.join-group{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+.join-group button{
+    cursor: pointer;
+    font-size: 17px;
+    border: none;
+    outline: none;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: white;
+    background-color: #10a5f5;
+    border-radius: 10px;
+    padding: 5px 20px 7px 20px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.join-group p {
+    padding-top: 5px;
+    padding-left: 10px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+/* addUser & removeUser attributes */
+.removeuser-container{
+    margin-top: 15px;
+}
 /* @media screen  and (max-width){
     main{
         width: 95%;

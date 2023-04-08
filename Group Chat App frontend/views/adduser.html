@@ -5,9 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/views/css/chat.css">
-    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
-    <script src="/creategroup.js" defer></script>
-    <title>Create Group</title>
+    <title>Add User</title>
+    <script src="/adduser.js"></script>
 </head>
 <body>
     <main class="main-container" id="main-container">
@@ -21,15 +20,23 @@
         </header>
         <div class="container">
             <div class="sub-container">
-                <div class="creategroup-container">
-                    <h2>Create Group</h2>
-                    <form onsubmit="createChatGroup(event)">
+                <div class="adduser-container">
+                    <h2>Add User</h2>
+                    <form onsubmit="addUser(event)">
                         <div class="groupname">
-                            <input type="text" name="groupname" placeholder="Enter group name . . .">
-                            <button type="submit" id="creatinggroupBtn">Create Group</button>
+                            <input type="text" name="groupname" placeholder="Enter user name . . .">
+                            <button type="submit" id="creatinggroupBtn">Add User</button>
                         </div>
                     </form>
                 </div>
+                <div class="removeuser-container"></div>
+                <h2>Remove User</h2>
+                    <form onsubmit="removeUser(event)">
+                        <div class="groupname">
+                            <input type="text" name="groupname" placeholder="Enter user name . . .">
+                            <button type="submit" id="creatinggroupBtn">Remove User</button>
+                        </div>
+                    </form>
             </div>
         </div>
     </main>

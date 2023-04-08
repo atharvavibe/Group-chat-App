@@ -5,22 +5,95 @@ const chatsContainer = document.getElementById('chats')
 const messageInput = document.getElementById('user-input')
 const createGroup = document.getElementById('creategroupBtn')
 const groupList = document.getElementById('group-list')
+const chatGroups = document.getElementsByClassName('chat-groups')
+const adminfeature = document.getElementsByClassName('admin-feature')
+const adduserBtn = document.getElementById('adduserBtn')
+const makeuseradminBtn = document.getElementById('makeuseradminBtn')
 
+var userGroups = {}
+var alluserGroups = []
 
-window.addEventListener('DOMContentLoaded', showAll)
+window.addEventListener('DOMContentLoaded',showUserGroups() )
 
-function showAll(){
-    showUserMessagesAndGroups()
+// function showAll(){
+//     console.log(chatGroups)
+//     showUserMessages()
+// }
+
+function getglobalChat(e){
     showUserMessages()
 }
 
+adduserBtn.addEventListener('click', () => {
+    window.location.href = 'adduser.html'
+})
 
-async function showUserMessagesAndGroups(){
+async function getGroupName(e){
+    try {
+        //console.log(e.target.innerText)
+        const token = localStorage.getItem('token')
+        for(var i  = 0; i < alluserGroups.length; i++){
+            if(alluserGroups[i].groupname == e.target.innerText)
+            {
+                const response = await axios.get(`http://localhost:3000/group/getgroupmessage/${alluserGroups[i].groupId}`, {headers: {"Authorization" : token}})
+                    console.log(response.data.groupmessage)
+                    showGroupChatonUI(response.data.groupmessage, token)
+                    if(alluserGroups[i].isadmin == true){
+                        adduserBtn.style.visibility = "visible" 
+                        makeuseradminBtn.style.visibility = "visible"
+                    }
+            }
+        }
+    }catch(err){
+        console.log(err)
+    }
+}
+
+//Displaying group chats on UI
+function showGroupChatonUI(chats, token){
+    chatsContainer.innerHTML = ''
+    const res = parseJwt(token)
+    for(var i = 0; i < chats.length; i++){
+        if(res.username == chats[i].username){
+            const messageOutgoing = document.createElement('div')
+            messageOutgoing.classList.add('outgoing')
+        messageOutgoing.innerHTML = `
+        <h5>Me</h5>
+        <p>${chats[i].groupmessage}</p>
+        `
+        chatsContainer.appendChild(messageOutgoing)
+        }
+        else{ const messageIncoming = document.createElement('div')
+            messageIncoming.classList.add('incoming')
+            messageIncoming.innerHTML = `
+            <h5>${chats[i].user.username}</h5>
+            <p>${chats[i].groupmessage}</p>
+            `
+            chatsContainer.appendChild(messageIncoming)}
+
+        }
+}
+
+async function showUserGroups(){
     try {
         const token = localStorage.getItem('token')
+        const response = parseJwt(token)
         const res = await axios.get('http://localhost:3000/group/getusergroups', {headers: {"Authorization" : token}})
-        //console.log(res.data.getusergroups[0].groupname)
+        console.log(res.data.getusergroups)
         showMygroupsonUI(res.data.getusergroups)
+            
+        for(var i = 0; i < res.data.getusergroups.length; i++ ){
+            userGroups = {
+                groupId : res.data.getusergroups[i].id,
+                groupname: res.data.getusergroups[i].groupname,
+                userId: res.data.getusergroups[i].usergroup.userId,
+                isadmin: res.data.getusergroups[i].usergroup.admin
+            }
+
+            alluserGroups.push(userGroups)
+        }
+        console.log(alluserGroups)
+       
     } catch (err) {
         console.log(err)
     }
@@ -29,7 +102,8 @@ function showMygroupsonUI(myGroups){
     for(var i = 0; i < myGroups.length; i++){
         const myGroupList = document.createElement('div')
         myGroupList.classList.add('chat-groups')
-        myGroupList.innerHTML = `<p>${myGroups[i].groupname}<p>`
+        myGroupList.setAttribute('onclick', 'getGroupName(event)')
+        myGroupList.innerHTML = `<p>${myGroups[i].groupname}</p>`
         groupList.appendChild(myGroupList)
     }
     
@@ -77,7 +151,7 @@ async function sendChat(e){
 }
 
 function showNumberofUsers(totalUsers){
-    console.log(totalUsers)
+    //console.log(totalUsers)
     usersHead.innerHTML = '<h3>People</h3>'
     const nunmberofUsers = document.createElement("h4")
     if(totalUsers != 0){
@@ -87,7 +161,7 @@ function showNumberofUsers(totalUsers){
 }
 
 function showUsers(allUsers, token){
-    console.log(allUsers)
+    //console.log(allUsers)
     usersList.innerHTML = ''
     const res = parseJwt(token)
     for(var i = 0; i < allUsers.length; i++){

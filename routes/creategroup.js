@@ -8,8 +8,10 @@ const authenticationController = require('../middleware/auth')
 
 router.post('/creategroup', authenticationController.authenticate, creategroupController.createGroup)
 
-router.get('/getallgroups', authenticationController.authenticate, creategroupController.getallGroups)
+//router.get('/getallgroups', authenticationController.authenticate, creategroupController.getallGroups)
 
 router.get('/getusergroups', authenticationController.authenticate, creategroupController.getUserGroups)
+
+router.get('/getgroupmessage/:groupid',authenticationController.authenticate, creategroupController.getGroupchats)
 
 module.exports = router

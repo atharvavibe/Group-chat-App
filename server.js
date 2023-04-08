@@ -19,6 +19,7 @@ const User = require('./models/user')
 const Chat = require('./models/chats')
 const Group = require('./models/creategroup')
 const Usergroup = require('./models/usergroup')
+const GroupMessage = require('./models/groupchat')
 
 const app = express()
 
@@ -38,6 +39,9 @@ Chat.belongsTo(User)
 
 Group.hasMany(Chat)
 Chat.belongsTo(Group)
+
+User.hasMany(GroupMessage)
+GroupMessage.belongsTo(User)
 
 User.belongsToMany(Group, {through: Usergroup})
 Group.belongsToMany(User, {through: Usergroup})
