@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/views/css/chat.css">
+    <title>Add/Remove User</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script src="/addorremoveuser.js"></script>
+</head>
+<body>
+    <main class="main-container" id="main-container">
+        <header>
+           <div class="title">
+            <img src="/icons/message-solid (1).svg" width="35px">
+            <h1>Chat App</h1>
+           </div>
+           <button id="globalchat" class="btn" onclick="showMyGroups(event)"><h3>My Groups</h3></button>
+           <button type="submit" class="btn" id="logout"><h3>Log out</h3></button>
+        </header>
+        <div class="container">
+            <div class="sub-container">
+                <div class="adduser-container">
+                    <h2>Add User</h2>
+                    <form onsubmit="addUser(event)">
+                        <div class="groupname" id="adduser-div">
+                            <input type="text" name="username" placeholder="Enter Username . . .">
+                            <input type="text" name="groupname" placeholder="Enter Groupname . . .">
+                            <button type="submit" id="creatinggroupBtn">Add User</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="removeuser-container"></div>
+                <h2>Remove User</h2>
+                    <form onsubmit="removeUser(event)">
+                        <div class="groupname" id="removeuser-div">
+                            <input type="text" name="username" placeholder="Enter Username . . .">
+                            <input type="text" name="groupname" placeholder="Enter Groupname . . .">
+                            <button type="submit" id="creatinggroupBtn">Remove User</button>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

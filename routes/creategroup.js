@@ -10,6 +10,8 @@ router.post('/creategroup', authenticationController.authenticate, creategroupCo
 
 //router.get('/getallgroups', authenticationController.authenticate, creategroupController.getallGroups)
 
+router.post('/sendgroupmessage/:groupid',authenticationController.authenticate, creategroupController.sendMessage )
+
 router.get('/getusergroups', authenticationController.authenticate, creategroupController.getUserGroups)
 
 router.get('/getgroupmessage/:groupid',authenticationController.authenticate, creategroupController.getGroupchats)

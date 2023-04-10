@@ -347,6 +347,14 @@ main header{
 .removeuser-container{
     margin-top: 15px;
 }
+
+#adduser-div input{
+    margin-bottom: 20px;
+}
+
+#removeuser-div input{
+    margin-bottom: 20px;
+}
 /* @media screen  and (max-width){
     main{
         width: 95%;

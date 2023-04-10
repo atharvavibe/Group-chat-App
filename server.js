@@ -13,6 +13,8 @@ const sequelize = require('./util/database')
 const userRoutes = require('./routes/user')
 const chatRoutes = require('./routes/chats')
 const createGroupRoutes = require('./routes/creategroup')
+const addUserRoutes = require('./routes/adduser')
+const removeUserRoutes = require('./routes/removeuser')
 
 //Models
 const User = require('./models/user')
@@ -31,6 +33,8 @@ app.use(express.json())
 app.use('/user', userRoutes)
 app.use('/chat', chatRoutes)
 app.use('/group', createGroupRoutes)
+app.use('/addgroupchatuser', addUserRoutes)
+app.use('/removegroupchatuser', removeUserRoutes)
 
 
 //table associations

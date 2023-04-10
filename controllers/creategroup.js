@@ -41,10 +41,21 @@ exports.createGroup = async(req, res) =>{
 
 }
 
+exports.sendMessage = async(req, res) => {
+  const  groupMessage = req.body.messages
+  const groupid = req.params.groupid
+  console.log(groupMessage, groupid)
+  const username = req.user.username
+  const response = await Groupchat.create({groupmessage: groupMessage, groupid: groupid, username: username, userId: req.user.id})
+  console.log(response)
+  res.status(200).json({success: true, message: 'Successfully sent the message!!', response})
+}
+
 
 exports.getGroupchats = async(req, res) => {
   try {
     const groupId = req.params.groupid
+    const alluserinGroup = []
     // const groupmembers = await Groupchat.findAll({where : {groupId}, 
     //   attributes: ["username"]})
     console.log(groupId)
@@ -54,7 +65,14 @@ exports.getGroupchats = async(req, res) => {
       where: {groupId},
       attributes: ["groupmessage", "username", "groupid"]
     })
-    res.status(200).json({groupmessage: groupmessages,message: 'Successful', success: true})
+    const getUserid = await UserGroup.findAll({where: {groupId: groupId}})
+    //console.log('>>>>',getUserid[0].userId, getUserid.length)
+    for(var i = 0 ; i < getUserid.length; i++){
+      const getUsername = await User.findOne({where: {id: getUserid[i].userId }})
+      console.log(getUsername)
+      alluserinGroup.push(getUsername.username)
+    }
+    res.status(200).json({groupmessage: groupmessages,message: 'Successful', success: true, alluserinGroup})
   } catch (err) {
     console.log(err)
   }
